@@ -1,12 +1,12 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="month-view">
+    <h1>This is the month view</h1>
   </div>
 </template>
 
 <style>
 @media (min-width: 1024px) {
-  .about {
+  .month-view {
     min-height: 100vh;
     display: flex;
     align-items: center;

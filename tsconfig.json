@@ -10,6 +10,12 @@
   ],
   "compilerOptions": {
     "noImplicitAny": false,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
     "allowJs": true,
-  },
+    "importHelpers": true,
+    "strict": true,
+    "target": "ES6"
+  }
 }

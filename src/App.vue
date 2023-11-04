@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import AppDatePicker from './components/AppDatePicker.vue'
+import { RouterLink, RouterView } from 'vue-router';
+import AppDatePicker from './components/AppDatePicker.vue';
 </script>
 
 <template>
@@ -9,8 +9,8 @@ import AppDatePicker from './components/AppDatePicker.vue'
       <AppDatePicker />
 
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/"> Day view </RouterLink>
+        <RouterLink to="/monthView"> Month view </RouterLink>
       </nav>
     </div>
   </header>

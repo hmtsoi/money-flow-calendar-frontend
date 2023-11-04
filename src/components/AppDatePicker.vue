@@ -1,7 +1,6 @@
 <template>
   <DatePicker
     ref="datePicker"
-    @dayclick="dayChange"
     v-model="date"
     :rules="rules"
     :attributes="attrs"
@@ -10,6 +9,7 @@
     nav-visibility="focus"
     expanded
     show-iso-weeknumbers
+    @dayclick="dayChange"
   >
     <template #footer>
       <div class="w-full px-4 pb-3">
@@ -29,50 +29,54 @@
 </template>
 
 <script setup lang="ts">
-import moment from 'moment'
-import { DatePicker } from 'v-calendar'
-import type { CalendarDay } from 'v-calendar/dist/types/src/utils/page.js'
-import 'v-calendar/style.css'
+import moment from 'moment';
+import { DatePicker } from 'v-calendar';
+import type { CalendarDay } from 'v-calendar/dist/types/src/utils/page.js';
+import 'v-calendar/style.css';
 
-import { ref } from 'vue'
-import { useSelectedDayStore } from '@/stores/selectedDay'
+import { onMounted, ref } from 'vue';
+import { useSelectedDayStore } from '@/stores/selectedDay';
 
-const { selectedDay, changeSelectedDay } = useSelectedDayStore()
+const { selectedDay, changeSelectedDay } = useSelectedDayStore();
 
-const datePicker = ref(DatePicker)
-const date = ref(selectedDay)
-const displayDate = ref(moment(selectedDay).format('YYYY-MM-DD'))
+const datePicker = ref(DatePicker);
+const date = ref(selectedDay);
+const displayDate = ref(moment(selectedDay).format('YYYY-MM-DD'));
+
+onMounted(() => {
+  moveToday();
+});
 
 const rules = ref({
   hours: 0,
   minutes: 0,
   seconds: 0,
-  milliseconds: 0
-})
+  milliseconds: 0,
+});
 
 const attrs = ref([
   {
     key: 'selected',
     highlight: true,
-    dates: selectedDay
-  }
-])
+    dates: selectedDay,
+  },
+]);
 
 const updateCalendar = (d: Date) => {
-  date.value = d
-  changeSelectedDay(d)
-  attrs.value = [{ key: 'selected', highlight: true, dates: d }]
-  displayDate.value = moment(d).format('YYYY-MM-DD')
-}
+  date.value = d;
+  changeSelectedDay(d);
+  attrs.value = [{ key: 'selected', highlight: true, dates: d }];
+  displayDate.value = moment(d).format('YYYY-MM-DD');
+};
 
 function moveToday() {
-  const d = new Date()
-  updateCalendar(d)
-  datePicker.value.move(d)
+  const d = new Date();
+  updateCalendar(d);
+  datePicker.value.move(d);
 }
 
 function dayChange(val: CalendarDay) {
-  updateCalendar(val.date)
+  updateCalendar(val.date);
 }
 </script>
 

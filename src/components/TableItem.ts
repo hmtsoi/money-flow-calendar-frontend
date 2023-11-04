@@ -1,5 +1,6 @@
 export interface TableItem {
-    age: number;
-    first_name: string,
-    last_name: string,
+  itemName: string;
+  amount: number;
+  date: string;
+  remark: string;
 }
