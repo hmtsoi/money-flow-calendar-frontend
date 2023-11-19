@@ -9,6 +9,12 @@ declare module 'vue' {
   export interface GlobalComponents {
     AppDatePicker: typeof import('./src/components/AppDatePicker.vue')['default']
     AppMainTable: typeof import('./src/components/AppMainTable.vue')['default']
+    BButton: typeof import('bootstrap-vue-next')['BButton']
+    BEditableTable: typeof import('bootstrap-vue-next')['BEditableTable']
+    BForm: typeof import('bootstrap-vue-next')['BForm']
+    BFormCheckbox: typeof import('bootstrap-vue-next')['BFormCheckbox']
+    BFormInput: typeof import('bootstrap-vue-next')['BFormInput']
+    BInputGroup: typeof import('bootstrap-vue-next')['BInputGroup']
     BSpinner: typeof import('bootstrap-vue-next')['BSpinner']
     BTable: typeof import('bootstrap-vue-next')['BTable']
     IconCommunity: typeof import('./src/components/icons/IconCommunity.vue')['default']

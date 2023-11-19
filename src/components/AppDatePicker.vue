@@ -36,8 +36,10 @@ import 'v-calendar/style.css';
 
 import { onMounted, ref } from 'vue';
 import { useSelectedDayStore } from '@/stores/selectedDay';
+import { useTableItemsStore } from '@/stores/spendingTableItems';
 
 const { selectedDay, changeSelectedDay } = useSelectedDayStore();
+const tableItemsStore = useTableItemsStore();
 
 const datePicker = ref(DatePicker);
 const date = ref(selectedDay);
@@ -63,9 +65,10 @@ const attrs = ref([
 ]);
 
 const updateCalendar = (d: Date) => {
-  date.value = d;
+  date.value = moment(d).format('YYYY-MM-DD');
   changeSelectedDay(d);
-  attrs.value = [{ key: 'selected', highlight: true, dates: d }];
+  tableItemsStore.fetchAndUpdate(date.value);
+  attrs.value = [{ key: 'selected', highlight: true, dates: moment(d).format('YYYY-MM-DD') }];
   displayDate.value = moment(d).format('YYYY-MM-DD');
 };
 
